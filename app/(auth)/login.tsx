@@ -1,24 +1,56 @@
 import { View, Text, ScrollView, Image } from "react-native";
 import React, { useState } from "react";
+import { Link, useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images, SIZES } from "../../constants";
 import LabelCustom from "../../components/Form/LabelCustom";
 import TextInputCustom from "../../components/Form/TextInputCustom";
 import BottonCustom from "../../components/Form/Button";
-import { Link } from "expo-router";
+import ModelCustom from "@/components/ModelCustom";
+import { signIn } from "../../lib/appwrite";
+
 export default function login() {
+  const router = useRouter();
   const [isShowPassword, setIsShowPassword] = useState(false);
   const [ShowIcon, isShowIcon] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [message, setMessage] = useState("");
+  const [user, setUser] = useState({
+    password: "",
+    email: "",
+  });
+  const submitHandle = async () => {
+    if (!user.email || !user.password) {
+      setMessage("please fill all fields");
+      setModalVisible(true);
+    } else {
+      try {
+        let result = await signIn(user.email, user.password);
+        console.log(result);
+        router.replace("/home");
+      } catch (error: any) {
+        setModalVisible(true);
+        setMessage(error.message);
+      }
+    }
+  };
   return (
     <>
       <SafeAreaView className="bg-primary h-full">
         <ScrollView
           style={{
-            marginTop: SIZES.xLarge * 4,
             marginHorizontal: SIZES.large,
           }}
         >
-          <View className="w-full h-[85vh]">
+          <View className="w-full justify-center h-[85vh]">
+            <ModelCustom
+              title="Error"
+              message={message}
+              modalVisible={modalVisible}
+              hideModal={() => {
+                setModalVisible(!modalVisible);
+              }}
+            />
             <View style={{ marginBottom: SIZES.large + 22 }}>
               <Image
                 className="w-[115px] h-[34.07px]"
@@ -40,7 +72,7 @@ export default function login() {
                 <TextInputCustom
                   placeholderValue="Your unique Email"
                   changeTextinput={(value) => {
-                    console.log(value);
+                    setUser({ ...user, email: value });
                   }}
                 ></TextInputCustom>
               </View>
@@ -54,19 +86,14 @@ export default function login() {
                     setIsShowPassword(!isShowPassword);
                   }}
                   changeTextinput={(value) => {
-                    console.log(value);
+                    setUser({ ...user, password: value });
                   }}
                 ></TextInputCustom>
               </View>
               <Text className="text-right text-white mt-[18px] mb-[20px]">
                 Forgot password
               </Text>
-              <BottonCustom
-                name="Log In"
-                Callback={() => {
-                  console.log("login");
-                }}
-              />
+              <BottonCustom name="Log In" Callback={submitHandle} />
               <Text className="mt-[20px] text-center text-white">
                 Don’t have an account?
                 <Link className="text-secondary-200" href={"/signUp"}>

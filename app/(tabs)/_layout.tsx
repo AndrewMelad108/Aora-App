@@ -38,7 +38,7 @@ export default function tabLayout() {
             backgroundColor: "#161622",
             justifyContent: "center",
             alignContent: "center",
-            height: 20 * scaleRatio,
+            height: "8%",
           },
         }}
       >
