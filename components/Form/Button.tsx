@@ -9,9 +9,9 @@ export default function Button({
   Callback: () => void;
 }) {
   return (
-    <View className="m-auto">
-      <Pressable onPress={Callback}>
-        <Text className="text-[#161622] font-bold py-[18px] px-[82px] bg-secondary rounded-lg">
+    <View className="w-[98%] mx-auto">
+      <Pressable onPress={Callback} className=" bg-secondary rounded-lg">
+        <Text className="text-[#161622] font-bold py-[18px] text-center">
           {name}
         </Text>
       </Pressable>

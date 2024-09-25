@@ -1,6 +1,12 @@
 import { Stack, SplashScreen } from "expo-router";
 import { useFonts } from "expo-font";
 import React, { useEffect } from "react";
+import { StatusBar } from "expo-status-bar";
+import { NativeWindStyleSheet } from "nativewind";
+
+NativeWindStyleSheet.setOutput({
+  default: "native",
+});
 export default function RootLayout() {
   const [fontsLoaded, error] = useFonts({
     "Poppins-Black": require("../assets/fonts/Poppins-Black.ttf"),
@@ -19,12 +25,15 @@ export default function RootLayout() {
   }, [fontsLoaded, error]);
   if (!fontsLoaded && !error) return null;
   return (
-    <Stack
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
-      <Stack.Screen name="index" />
-    </Stack>
+    <>
+      <StatusBar backgroundColor="#161622" style="light" animated={true} />
+      <Stack
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <Stack.Screen name="index" />
+      </Stack>
+    </>
   );
 }
