@@ -2,15 +2,18 @@ import { View, Text, ScrollView, Image } from "react-native";
 import React, { useState } from "react";
 import { Link, useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
+
 import { images, SIZES } from "../../constants";
 import LabelCustom from "../../components/Form/LabelCustom";
 import TextInputCustom from "../../components/Form/TextInputCustom";
 import BottonCustom from "../../components/Form/Button";
 import ModelCustom from "@/components/ModelCustom";
 import { signIn } from "../../lib/appwrite";
+import { useAppStore } from "../../store/aroa-store";
 
 export default function login() {
   const router = useRouter();
+  const { counter } = useAppStore();
   const [isShowPassword, setIsShowPassword] = useState(false);
   const [ShowIcon, isShowIcon] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
@@ -21,17 +24,18 @@ export default function login() {
   });
   const submitHandle = async () => {
     if (!user.email || !user.password) {
-      setMessage("please fill all fields");
+      setMessage("Please fill all fields");
       setModalVisible(true);
     } else {
-      try {
-        let result = await signIn(user.email, user.password);
-        console.log(result);
-        router.replace("/home");
-      } catch (error: any) {
-        setModalVisible(true);
-        setMessage(error.message);
-      }
+      // try {
+      //   await signIn(user.email, user.password);
+      //   console.log(await signIn(user.email, user.password));
+      //   router.push("/home");
+      // } catch (error: any) {
+      //   setMessage(error.message);
+      //   setModalVisible(true);
+      // }
+      router.push("/home");
     }
   };
   return (

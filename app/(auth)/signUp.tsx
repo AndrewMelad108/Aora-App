@@ -26,13 +26,14 @@ export default function signUp() {
       setMessage("please fill all fields");
       setModalVisible(true);
     } else {
-      try {
-        let result = await createUser(user.email, user.password, user.username);
-        // router.push("/home");
-      } catch (error: any) {
-        setModalVisible(true);
-        setMessage(error.message);
-      }
+      // try {
+      //   await createUser(user.email, user.password, user.username);
+      //   router.push("/home");
+      // } catch (error: any) {
+      //   setModalVisible(true);
+      //   setMessage(error.message);
+      // }
+      router.push("/home");
     }
   };
   return (

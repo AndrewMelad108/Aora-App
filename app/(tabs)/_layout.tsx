@@ -1,4 +1,4 @@
-import { View, Text, Image, PixelRatio } from "react-native";
+import { View, Text, Image } from "react-native";
 import React from "react";
 import { Tabs } from "expo-router";
 import { icons } from "../../constants";
@@ -25,7 +25,6 @@ const TabIcon = ({ name, icon, color, focused }: any) => {
   );
 };
 export default function tabLayout() {
-  const scaleRatio = PixelRatio.get();
   return (
     <>
       <Tabs

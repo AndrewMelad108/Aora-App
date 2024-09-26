@@ -3,6 +3,7 @@ import React from "react";
 import { SIZES, icons } from "../../constants";
 export default function TextInputCustom({
   placeholderValue,
+  placeholderColor,
   changeTextinput,
   PasswordFlag,
   showPassword,
@@ -13,12 +14,13 @@ export default function TextInputCustom({
   showPassword?: () => void;
   PasswordFlag?: boolean;
   ShowIcon?: boolean;
+  placeholderColor?: string;
 }) {
   return (
-    <View className="relative" style={{ marginTop: SIZES.medium }}>
+    <View style={{ marginTop: SIZES.medium, position: "relative" }}>
       <TextInput
         placeholder={placeholderValue}
-        placeholderTextColor={"#7B7B8B"}
+        placeholderTextColor={placeholderColor ? placeholderColor : "#7B7B8B"}
         className="text-white placeholder:text-[16px] border-[1px] border-[#232533] rounded-[8px] p-[16px] bg-[#1E1E2D] focus:border-secondary-100 focus:border-1"
         secureTextEntry={PasswordFlag}
         onChangeText={(value) => changeTextinput(value)}
