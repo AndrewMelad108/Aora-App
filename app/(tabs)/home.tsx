@@ -10,7 +10,7 @@ import VideosCard from "../../components/Shared/videosCard";
 export default function home() {
   const [refreshing, setRefreshing] = useState(false);
   return (
-    <SafeAreaView className="bg-primary min-h-screen">
+    <SafeAreaView className="bg-primary">
       <FlatList
         ListHeaderComponent={
           <>
@@ -42,9 +42,9 @@ export default function home() {
         data={dataList}
         keyExtractor={(item: any) => item.id}
         renderItem={({ item }: any) => (
-          <>
-            <VideosCard item={item}> </VideosCard>
-          </>
+          <View className="mx-4">
+            <VideosCard item={item}></VideosCard>
+          </View>
         )}
         refreshControl={
           <RefreshControl
@@ -52,15 +52,9 @@ export default function home() {
             refreshing={refreshing}
             colors={["#FF9C01"]}
             progressBackgroundColor="#161622"
-            onRefresh={() => {
-              setTimeout(() => {
-                setRefreshing(true);
-              }, 1000);
-            }}
           />
         }
       />
-      <View className="home-content"></View>
     </SafeAreaView>
   );
 }

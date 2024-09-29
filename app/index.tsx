@@ -5,7 +5,7 @@ import Btn from "@/components/Form/Button";
 export default function Index() {
   const router = useRouter();
   const clickHandle = () => {
-    router.push("/login");
+    router.push("/home");
   };
   return (
     <>
@@ -25,13 +25,13 @@ export default function Index() {
               className="w-[375px] h-[298px]"
             />
           </View>
-          <View style={{ marginTop: SIZES.medium }} className=" relative">
-            <Text className="text-white m-auto font-bold  text-[30px] text-center">
+          <View style={{ marginTop: SIZES.medium, position: "relative" }}>
+            <Text className="text-white m-auto font-bold  text-[30px] text-center ">
               Discover Endless Possibilities with
-              <Text className="text-secondary-100">Aora</Text>
+              <Text className="text-secondary-100 ">Aora</Text>
             </Text>
             <Image
-              className="w-16 h-16 absolute right-[5%] bottom-[-28px]"
+              className="w-16 h-16 absolute right-[7%] -bottom-[30%]"
               resizeMode="contain"
               source={images.path}
             ></Image>
