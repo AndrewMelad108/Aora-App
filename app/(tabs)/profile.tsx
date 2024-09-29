@@ -1,12 +1,20 @@
-import { View, Text, Image, FlatList, RefreshControl } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  FlatList,
+  RefreshControl,
+  Pressable,
+} from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-
+import { useRouter } from "expo-router";
 import { icons, images } from "../../constants";
 import { dataList } from "@/constants/data";
 
 import VideosCard from "../../components/Shared/videosCard";
 export default function profile() {
+  const router = useRouter();
   const [refreshing, setRefreshing] = useState(false);
   return (
     <SafeAreaView className="bg-primary">
@@ -14,7 +22,13 @@ export default function profile() {
         ListHeaderComponent={
           <>
             <View className="ml-auto mt-[20px] pr-2">
-              <Image className="w-6 h-6" source={icons.logout}></Image>
+              <Pressable
+                onPress={() => {
+                  router.push("/login");
+                }}
+              >
+                <Image className="w-6 h-6" source={icons.logout}></Image>
+              </Pressable>
             </View>
             <View className="flex-col justify-center items-center">
               <View className="border-2 border-secondary rounded-md">
