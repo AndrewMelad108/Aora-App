@@ -59,23 +59,6 @@ export default function tabLayout() {
           }}
         />
         <Tabs.Screen
-          name="create"
-          options={{
-            headerShown: false,
-            title: "Create",
-            tabBarIcon: ({ color, focused }): any => {
-              return (
-                <TabIcon
-                  name="Create"
-                  icon={icons.plus} // Ensure this points to a valid image source
-                  color={color}
-                  focused={focused}
-                />
-              );
-            },
-          }}
-        />
-        <Tabs.Screen
           name="profile"
           options={{
             headerShown: false,
@@ -85,6 +68,23 @@ export default function tabLayout() {
                 <TabIcon
                   name="Profile"
                   icon={icons.profile} // Ensure this points to a valid image source
+                  color={color}
+                  focused={focused}
+                />
+              );
+            },
+          }}
+        />
+        <Tabs.Screen
+          name="create"
+          options={{
+            headerShown: false,
+            title: "Create",
+            tabBarIcon: ({ color, focused }): any => {
+              return (
+                <TabIcon
+                  name="Create"
+                  icon={icons.plus} // Ensure this points to a valid image source
                   color={color}
                   focused={focused}
                 />
