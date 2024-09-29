@@ -5,7 +5,7 @@ import Btn from "@/components/Form/Button";
 export default function Index() {
   const router = useRouter();
   const clickHandle = () => {
-    router.push("/login");
+    router.push("/home");
   };
   return (
     <>
