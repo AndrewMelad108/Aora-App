@@ -29,8 +29,11 @@ You can start developing by editing the files inside the **app** directory. This
 and create a blank **app** directory where you can start developing.
 
 ## Images
-<img src="./images/image4.jpeg" alt="Image" style="width: 150; height: 300px;">
-<img src="./images/Aora_App.jpeg" alt="Image" style="width: 150; height: 300px;">
-<img src="./images/image1.jpeg" alt="Image" style="width: 150; height: 300px;">
-<img src="./images/image2.jpeg" alt="Image" style="width: 150; height: 300px;">
-<img src="./images/image3.jpeg" alt="Image" style="width: 150; height: 300px;">
+<div style="display:'flex'">
+<img src="./images/image4.jpeg" alt="Image" style="width: 150; height: 300px; margin:10px">
+<img src="./images/Aora_App.jpeg" alt="Image" style="width: 150; height: 300px; margin:10px">
+<img src="./images/image1.jpeg" alt="Image" style="width: 150; height: 300px; margin:10px">
+<img src="./images/image2.jpeg" alt="Image" style="width: 150; height: 300px; margin:10px">
+<img src="./images/image3.jpeg" alt="Image" style="width: 150; height: 300px; margin:10px">
+</div>
+
